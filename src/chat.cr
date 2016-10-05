@@ -13,11 +13,6 @@ OptionParser.parse! do |opts|
   end
 end
 
-server = HTTP::Server.new(bind, port) do |context|
-  context.response.content_type = "text/plain"
-  context.response << "Hello world, got #{context.request.path}"
-end
-
 puts "Listening on http://#{bind}:#{port}"
 server.listen
 
