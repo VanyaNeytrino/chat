@@ -13,8 +13,6 @@ OptionParser.parse! do |opts|
   end
 end
 
-puts "Listening on http://#{bind}:#{port}"
-server.listen
 
 conn = PG.connect("postgres://chat:123@localhost:5432/mess")
 
