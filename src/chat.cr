@@ -1,8 +1,27 @@
 require "kemal"
 require "pg"
+require "option_parser"
+require "http/server"
 require "./app/message"
 
-conn = PG.connect("postgres://user:password@localhost:5432/db_name")
+bind = "0.0.0.0"
+port = 8080
+
+OptionParser.parse! do |opts|
+  opts.on("-p PORT", "--port PORT", "define port to run server") do |opt|
+    port = opt.to_i
+  end
+end
+
+server = HTTP::Server.new(bind, port) do |context|
+  context.response.content_type = "text/plain"
+  context.response << "Hello world, got #{context.request.path}"
+end
+
+puts "Listening on http://#{bind}:#{port}"
+server.listen
+
+conn = PG.connect("postgres://chat:123@localhost:5432/mess")
 
 sockets = [] of HTTP::WebSocket
 

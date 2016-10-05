@@ -1,11 +1,11 @@
 
 require "pg"
 
-DB_NAME = "db_name"
-PG_PATH = "postgres://user:password@localhost:5432/db_name"
+DB_NAME = "mess"
+PG_PATH = "postgres://chat:123@localhost:5432"
 
 # CREATES CONNECTION WITH DEFAULT POSTGRES conn
-conn = PG.connect(""postgres://user:password@localhost:5432/db_name")
+conn = PG.connect("postgres://chat:123@localhost:5432/mess")
 
 database_exists? = conn.exec(%{
   SELECT CAST(1 AS integer)
@@ -26,4 +26,4 @@ database_exists? = conn.exec(%{
   puts "Process finished succesfully"
 
 puts "Closing connection..."
-connB.close
+conn.close
