@@ -1,1 +1,1 @@
-web:  ./chat.cr
+web:  ./chat
