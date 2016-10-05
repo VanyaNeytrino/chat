@@ -1,1 +1,1 @@
-web: node /src/chat.cr
+web:  ./chat.cr
