@@ -26,11 +26,8 @@ end
 
 ws "/" do |socket|
   sockets.push socket
-
-  
-
   socket.send Message.all(conn).to_json
-  
+
   socket.on_message do |message|
     Message.from_json(message).insert(conn)
     sockets.each do |a_socket|
@@ -42,7 +39,7 @@ ws "/" do |socket|
       end
     end
   end
-  
+
   socket.on_close do |_|
     sockets.delete(socket)
     puts "Closing Socket: #{socket}"
