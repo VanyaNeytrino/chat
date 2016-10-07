@@ -14,7 +14,7 @@ OptionParser.parse! do |opts|
 end
 
 
-conn = PG.connect("postgres://chat:123@localhost:5432/mess")
+conn = PG.connect("postgres://user:password@localhost:5432/db_name")
 
 sockets = [] of HTTP::WebSocket
 

@@ -2,10 +2,10 @@
 require "pg"
 
 DB_NAME = "mess"
-PG_PATH = "postgres://chat:123@localhost:5432"
+PG_PATH = "postgres://user:password@localhost:5432/db_name"
 
 # CREATES CONNECTION WITH DEFAULT POSTGRES conn
-conn = PG.connect("postgres://chat:123@localhost:5432/mess")
+conn = PG.connect("postgres://user:password@localhost:5432/db_name")
 
 database_exists? = conn.exec(%{
   SELECT CAST(1 AS integer)
